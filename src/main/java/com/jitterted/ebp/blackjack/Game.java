@@ -12,8 +12,7 @@ public class Game {
 
   private Hand dealerHand = new Hand();
   private Hand playerHand = new Hand();
-  private int playerBalance = 0;
-  private int playerBet = 0;
+  private Player player;
 
   public static void main(String[] args) {
     displayWelcomeScreen();
@@ -23,12 +22,12 @@ public class Game {
 
   private static void displayWelcomeScreen() {
     System.out.println(ansi()
-                           .bgBright(Ansi.Color.WHITE)
-                           .eraseScreen()
-                           .cursor(1, 1)
-                           .fgGreen().a("Welcome to")
-                           .fgRed().a(" Jitterted's")
-                           .fgBlack().a(" BlackJack"));
+        .bgBright(Ansi.Color.WHITE)
+        .eraseScreen()
+        .cursor(1, 1)
+        .fgGreen().a("Welcome to")
+        .fgRed().a(" Jitterted's")
+        .fgBlack().a(" BlackJack"));
   }
 
   private static void playGame() {
@@ -50,6 +49,7 @@ public class Game {
 
   public Game() {
     deck = new Deck();
+    player = new Player();
   }
 
   public void initialDeal() {
@@ -183,28 +183,4 @@ public class Game {
     System.out.println(" (" + playerHand.value() + ")");
   }
 
-  public void playerDeposits(int amount) {
-    playerBalance += amount;
-  }
-
-  public void playerBets(int betAmount) {
-    playerBet = betAmount;
-    playerBalance -= betAmount;
-  }
-
-  public int playerBalance() {
-    return playerBalance;
-  }
-
-  public void playerWins() {
-    playerBalance += playerBet * 2;
-  }
-
-  public void playerLoses() {
-    playerBalance += playerBet * 0;
-  }
-
-  public void playerTies() {
-    playerBalance += playerBet * 1;
-  }
 }
