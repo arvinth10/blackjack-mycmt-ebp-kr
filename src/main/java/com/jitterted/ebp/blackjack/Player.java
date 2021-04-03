@@ -4,16 +4,19 @@ public class Player {
 
   private int playerBet;
   private int playerBalance;
+  private int playerBetTotal;
 
   public Player() {
     playerBet = 0;
     playerBalance = 0;
+    playerBetTotal = 0;
 
   }
 
   public void playerBets(int betAmount) {
     playerBet = betAmount;
     playerBalance -= betAmount;
+    playerBetTotal += betAmount;
   }
 
   public void playerDeposits(int amount) {
@@ -34,5 +37,9 @@ public class Player {
 
   public void playerTies() {
     playerBalance += playerBet * 1;
+  }
+
+  public int totalAmountBet(){
+    return playerBetTotal;
   }
 }
