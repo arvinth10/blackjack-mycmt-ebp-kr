@@ -82,5 +82,30 @@ public class PlayerTest {
     assertThat(player.totalAmountBet()).isEqualTo(20);
   }
 
+  @Test
+  void playerBet100Get10Bonus() {
+    Player player = new Player();
+    player.playerDeposits(100);
+    player.playerBets(100);
+    assertThat(player.totalAmountBet()).isEqualTo(110);
+  }
+
+  @Test
+  void playerBet200Get10Bonus() {
+    Player player = new Player();
+    player.playerDeposits(200);
+    player.playerBets(200);
+    assertThat(player.totalAmountBet()).isEqualTo(210);
+  }
+
+  @Test
+  void playerBet200Get10BonusAndWins() {
+    Player player = new Player();
+    player.playerDeposits(200);
+    player.playerBets(200);
+    player.playerWins();
+    assertThat(player.playerBalance()).isEqualTo(420);
+  }
+
 
 }

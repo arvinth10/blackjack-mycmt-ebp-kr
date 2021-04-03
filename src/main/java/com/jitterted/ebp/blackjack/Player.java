@@ -16,7 +16,14 @@ public class Player {
   public void playerBets(int betAmount) {
     playerBet = betAmount;
     playerBalance -= betAmount;
-    playerBetTotal += betAmount;
+
+    if (betAmount >= 100) {
+      playerBet += 10;
+    }
+
+    playerBetTotal += playerBet;
+
+
   }
 
   public void playerDeposits(int amount) {
@@ -39,7 +46,7 @@ public class Player {
     playerBalance += playerBet * 1;
   }
 
-  public int totalAmountBet(){
+  public int totalAmountBet() {
     return playerBetTotal;
   }
 }
